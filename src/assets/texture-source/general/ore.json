@@ -1,0 +1,15 @@
+{
+	"size": { "width": 16, "height": 16 },
+	"parts": [
+		{
+			"name": "ore_BACKGROUND"
+		},
+		{
+			"name": "ore",
+			"paint": true
+		},
+		{
+			"name": "ore_OVERLAY"
+		}
+	]
+}
