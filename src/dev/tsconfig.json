@@ -4,7 +4,7 @@
 		"lib": [
 			"ESNext"
 		],
-		"outFile": "C:\\Users\\Tenumn\\Desktop\\EnergyTech\\toolchain\\build\\project\\sources\\main.js",
+		"outFile": "C:\\Users\\Tenumn\\Desktop\\EnergyTech-CommunityEdition\\toolchain\\build\\project\\sources\\main.js",
 		"experimentalDecorators": true,
 		"downlevelIteration": true,
 		"allowJs": true
@@ -24,12 +24,11 @@
 		"base/api/Texture.ts",
 		"base/materials/Ingots.ts",
 		"base/materials/Ores.ts",
-		"base/materials/_Materials.ts",
-		"tech/energy/EnergyNode.ts"
+		"base/materials/_Materials.ts"
 	],
 	"files": [
-		"C:\\Users\\Tenumn\\Desktop\\EnergyTech\\toolchain\\declarations\\android-declarations.d.ts",
-		"C:\\Users\\Tenumn\\Desktop\\EnergyTech\\toolchain\\declarations\\android.d.ts",
-		"C:\\Users\\Tenumn\\Desktop\\EnergyTech\\toolchain\\declarations\\core-engine.d.ts"
+		"C:\\Users\\Tenumn\\Desktop\\EnergyTech-CommunityEdition\\toolchain\\declarations\\android-declarations.d.ts",
+		"C:\\Users\\Tenumn\\Desktop\\EnergyTech-CommunityEdition\\toolchain\\declarations\\android.d.ts",
+		"C:\\Users\\Tenumn\\Desktop\\EnergyTech-CommunityEdition\\toolchain\\declarations\\core-engine.d.ts"
 	]
 }

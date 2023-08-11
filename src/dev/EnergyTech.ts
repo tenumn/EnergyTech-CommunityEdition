@@ -18,5 +18,3 @@ Object.assign ??= function () {
 	}
 	return target;
 };
-
-

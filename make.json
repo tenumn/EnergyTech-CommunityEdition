@@ -1,9 +1,9 @@
 {
 	"global": {
 		"info": {
-			"name": "EnergyTech",
+			"name": "EnergyTech CE",
 			"description": "",
-			"author": "MaiSui",
+			"author": "ET DevTeam",
 			"version": "4.0",
 			"icon": "src/icon.png"
 		},
@@ -11,15 +11,8 @@
 	},
 	"make": {
 		"debugAbi": "armeabi-v7a",
-		"abis": [
-			"armeabi-v7a",
-			"x86"
-		],
-		"linkNative": [
-			"minecraftpe",
-			"innercore",
-			"nativejs"
-		],
+		"abis": ["armeabi-v7a", "x86"],
+		"linkNative": ["minecraftpe", "innercore", "nativejs"],
 		"excludeFromRelease": [],
 		"pushTo": "storage/emulated/0/games/horizon/packs/inner_core/innercore/mods/EnergyTech",
 		"ndkPath": null

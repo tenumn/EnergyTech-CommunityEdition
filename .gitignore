@@ -1,2 +1,6 @@
-# Windows image file caches
-Thumbs.db
+output/
+
+**/build/
+
+!src/*
+!toolchain/declarations/*
