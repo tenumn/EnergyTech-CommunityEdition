@@ -1,0 +1,12 @@
+{
+	"size": { "width": 16, "height": 16 },
+	"parts": [
+		{
+			"name": "orePiece"
+		},
+		{
+			"name": "orePiece_OVERLAY",
+			"paint": true
+		}
+	]
+}

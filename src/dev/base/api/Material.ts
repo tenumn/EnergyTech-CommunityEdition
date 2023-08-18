@@ -42,6 +42,8 @@ class Material extends Tag {
 		);
 		this.data = options;
 		for (let tag in options.vanilla) this.addItem(tag, options.vanilla[tag]);
+		Logger.Log(`创建材料 ID: ${key}`,'能源科技/材料');
+		Logger.Log(JSON.stringify(this.data),'能源科技/材料')
 	}
 	key: string;
 	name: string;

@@ -1,0 +1,13 @@
+{
+	"size": { "width": 16, "height": 96 },
+	"parts": [
+		{
+			"name": "singularity",
+			"paint": true
+		},
+		{
+			"name": "singularity_OVERLAY"
+		}
+	],
+	"animation": 6
+}

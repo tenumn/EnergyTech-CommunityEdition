@@ -22,10 +22,13 @@
 		"base/api/Material.ts",
 		"base/api/Tag.ts",
 		"base/api/Texture.ts",
-		"base/materials/Ingots.ts",
+		"base/materials/Generals.ts",
 		"base/materials/Ores.ts",
 		"base/materials/Tools.ts",
-		"base/materials/_Materials.ts"
+		"base/materials/Vanillas.ts",
+		"base/materials/_Materials.ts",
+		"base/materials/integration/Avaritia.ts",
+		"base/materials/integration/ExNihilo.ts"
 	],
 	"files": [
 		"C:\\Users\\Tenumn\\Desktop\\EnergyTech-CommunityEdition\\toolchain\\declarations\\android-declarations.d.ts",

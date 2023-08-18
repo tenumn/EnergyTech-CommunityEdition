@@ -101,5 +101,7 @@ var ETMaterials: Record<string, Material> = {
 			hoe: VanillaItemID.diamond_hoe,
 			sword: VanillaItemID.diamond_sword
 		}
-	}).add("ore", "gem", "tool")
+	}).add("ore", "gem", "tool"),
+	// 中子素
+	neutronium: new Material("neutronium", "Neutronium", {}).add("gem")
 };

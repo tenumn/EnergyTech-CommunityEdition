@@ -1,12 +1,5 @@
 /// <reference path="../api/Builder.ts" />
 
-class ItemRawOre extends ItemBuilder {
-	tag: string = "oreRaw";
-	getDisplayedName(): string {
-		return `Raw ${this.material.name} Ore`;
-	}
-}
-
 class BlockOre extends BlockBuilder {
 	tag: string = "ore";
 	getDisplayedName() {
@@ -26,6 +19,33 @@ class BlockOre extends BlockBuilder {
 	}
 }
 
+class ItemRawOre extends ItemBuilder {
+	tag: string = "oreRaw";
+	getDisplayedName(): string {
+		return `Raw ${this.material.name} Ore`;
+	}
+}
+
+class ItemCrushedOre extends ItemBuilder {
+	tag: string = "oreCrushed";
+	getStringId(): string {
+		return `crushed_${this.material.key}_ore`;
+	}
+	getDisplayedName(): string {
+		return `Crushed ${this.material.name} Ore`;
+	}
+}
+
+class ItemCrushedPurifiedOre extends ItemBuilder {
+	tag: string = "oreCrushedPurified";
+	getStringId(): string {
+		return `crushed_purified_${this.material.key}_ore`;
+	}
+	getDisplayedName(): string {
+		return `Crushed Purified ${this.material.name} Ore`;
+	}
+}
+
 Callback.addCallback("PreLoaded", () => {
 	for (let key in ETMaterials) {
 		let material = ETMaterials[key];
@@ -38,6 +58,14 @@ Callback.addCallback("PreLoaded", () => {
 			// 粗矿
 			let hasRawOreTag = material.has("rawOre");
 			if (hasOreTag || hasRawOreTag) new ItemRawOre(material).create();
+
+			// 粉碎矿 & 纯净粉碎矿
+			let hasCrushedOreTag = material.has("oreCrushed");
+			let hasCrushedPurifiedOreTag = material.has("oreCrushedPurified");
+			if (hasOreTag || hasCrushedOreTag || hasCrushedPurifiedOreTag) {
+				new ItemCrushedOre(material).create();
+				new ItemCrushedPurifiedOre(material).create();
+			}
 		}
 	}
 });

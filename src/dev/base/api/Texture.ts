@@ -16,7 +16,8 @@ class TextureSource {
 				{
 					name: `${tag}_OVERLAY`
 				}
-			]
+			],
+			animation: 1
 		};
 		let path = this.getPath(material, tag, ".json");
 		if (FileTools.isExists(path)) config = FileTools.ReadJSON(path);
@@ -42,15 +43,20 @@ class ItemTexture {
 	canvas: android.graphics.Canvas;
 
 	drawBitmap(bitmap: android.graphics.Bitmap, option?: { offset?: { x: number; y: number }; paint?: android.graphics.Paint }) {
-		(option ??= {}).offset ??= { x: 0, y: 0 };
+		option ??= {};
+		option.offset ??= { x: 0, y: 0 };
+		option.paint ??= new Paint();
 		this.canvas.drawBitmap(bitmap, option.offset.x, option.offset.y, option.paint);
 	}
 
 	drawImage(url: string, option?: { offset?: { x: number; y: number }; paint?: android.graphics.Paint }) {
+		option ??= {};
+		option.offset ??= { x: 0, y: 0 };
+		option.paint ??= new Paint();
 		if (FileTools.isExists(url)) this.drawBitmap(FileTools.ReadImage(url), option);
 	}
 
 	writeImage(url: string) {
-		FileTools.WriteImage(url, this.bitmap);
+		FileTools.WriteImage(`${url}.png`, this.bitmap);
 	}
 }

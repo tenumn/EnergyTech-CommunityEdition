@@ -48,15 +48,22 @@ class BlockBuilder extends Builder {
 				let texture = new ItemTexture(config.size);
 				for (let part of config.parts) {
 					let paint = new Paint();
-					if (part.paint) paint.setColorFilter(new ColorFilter(Color.parseColor(this.material.color || "#FFFFFF"), PorterDuff.Mode.MULTIPLY));
+					if (part.paint) {
+						let color = this.material.color || "#FFFFFF";
+						paint.setColorFilter(new ColorFilter(Color.parseColor(color), PorterDuff.Mode.MULTIPLY));
+					}
 					texture.drawImage(TextureSource.getPath(this.material.key, part.name, ".png"), { paint: paint });
 				}
-				texture.writeImage(`${TextureSource.getBlockPath()}/${icon[i][0]}_${icon[i][1]}.png`);
+				let path = `${TextureSource.getBlockPath()}/${icon[i][0]}_${icon[i][1]}`;
+				texture.writeImage(path);
+				if (config.animation > 1) texture.writeImage(`${path}.animation.${config.animation}`);
 			}
 
 			let id = this.material.genBlockID(this.tag, this.getStringId());
 			Block.createBlock(this.getStringId(), [{ name: this.getDisplayedName(), texture: this.getTexture(), inCreative: true }], this.tag);
 			this.onCreate(id);
+
+			Logger.Log(`创建方块 ID: ${this.getStringId()}(${id})`, `能源科技/材料`);
 		}
 	}
 	onCreate(id: number) {
@@ -76,15 +83,21 @@ class ItemBuilder extends Builder {
 			let texture = new ItemTexture(config.size);
 			for (let part of config.parts) {
 				let paint = new Paint();
-				if (part.paint) paint.setColorFilter(new ColorFilter(Color.parseColor(this.material.color || "#FFFFFF"), PorterDuff.Mode.MULTIPLY));
+				if (part.paint) {
+					let color = this.material.color || "#FFFFFF";
+					paint.setColorFilter(new ColorFilter(Color.parseColor(color), PorterDuff.Mode.MULTIPLY));
+				}
 				texture.drawImage(TextureSource.getPath(this.material.key, part.name, ".png"), { paint: paint });
 			}
 			let icon = this.getIcon();
-			texture.writeImage(`${TextureSource.getItemPath()}/${icon.name}_${icon.data}.png`);
-
+			let path = `${TextureSource.getItemPath()}/${icon.name}_${icon.data}`;
+			texture.writeImage(path);
+			if (config.animation > 1) texture.writeImage(`${path}.animation.${config.animation}`);
 			let id = this.material.genItemID(this.tag, this.getStringId());
 			Item.createItem(this.getStringId(), this.getDisplayedName(), this.getIcon(), { stack: this.getMaxStack() });
 			this.onCreate(id);
+
+			Logger.Log(`创建物品 ID: ${this.getStringId()}(${id})`, `能源科技/材料`);
 		}
 	}
 

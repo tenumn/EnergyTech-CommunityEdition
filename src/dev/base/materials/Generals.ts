@@ -1,26 +1,16 @@
 /// <reference path="../api/Builder.ts" />
 
-class ItemGem extends ItemBuilder {
-	tag: string = "gem";
-    getStringId(): string {
-        return this.material.key;
-    }
-	getDisplayedName(): string {
-		return this.material.name;
-	}
-}
-
-class ItemIngot extends ItemBuilder {
-	tag: string = "ingot";
-	getDisplayedName(): string {
-		return `${this.material.name} Ingot`;
-	}
-}
-
 class ItemGear extends ItemBuilder {
 	tag: string = "gear";
 	getDisplayedName(): string {
 		return `${this.material.name} Gear`;
+	}
+}
+
+class ItemCasing extends ItemBuilder {
+	tag: string = "casing";
+	getDisplayedName(): string {
+		return `${this.material.name} Casing`;
 	}
 }
 
@@ -45,65 +35,42 @@ class ItemPlate extends ItemBuilder {
 	}
 }
 
-class BlockBlock extends BlockBuilder {
-	tag: string = "block";
-	getDisplayedName() {
-		return `${this.material.name} Block`;
-	}
-}
-
-class ItemNugget extends ItemBuilder {
-	tag: string = "nugget";
+class ItemDensePlate extends ItemBuilder {
+	tag: string = "plateDense";
 	getDisplayedName(): string {
-		return `${this.material.name} Nugget`;
-	}
-}
-
-class ItemStick extends ItemBuilder {
-	tag: string = "stick";
-	getDisplayedName(): string {
-		return `${this.material.name} Stick`;
+		return `Dense ${this.material.name} Plate`;
 	}
 }
 
 Callback.addCallback("PreLoaded", () => {
 	for (let key in ETMaterials) {
 		let material = ETMaterials[key];
-		// 宝石
 		let hasGemTag = material.has("gem");
-		if (hasGemTag) new ItemGem(material).create();
-
-		// 锭
 		let hasIngotTag = material.has("ingot");
-		if (hasIngotTag) new ItemIngot(material).create();
 
 		// 齿轮
 		let hasGearTag = material.has("gear");
-		if (hasIngotTag || hasGearTag) new ItemGear(material).create();
+		if (hasGemTag || hasIngotTag || hasGearTag) new ItemGear(material).create();
 
-		// 粉
+		// 外壳
+		let hasCasingTag = material.has("casing");
+		if (hasGemTag || hasIngotTag || hasCasingTag) new ItemGear(material).create();
+
+		// 粉 & 小堆粉
 		let hasDustTag = material.has("dust");
-		if (hasGemTag || hasIngotTag || hasDustTag) new ItemDust(material).create();
-
-		// 小堆粉
 		let hasSmallDustTag = material.has("dustSmall");
-		if (hasDustTag || hasSmallDustTag) new ItemSmallDust(material).create();
+		if (hasGemTag || hasIngotTag || hasDustTag || hasSmallDustTag) {
+			new ItemDust(material).create();
+			new ItemSmallDust(material).create();
+		}
 
-		// 板
+		// 板 & 压缩板
 		let hasPlateTag = material.has("plate");
-		if (hasGemTag || hasIngotTag || hasPlateTag) new ItemPlate(material).create();
-
-		// 块
-		let hasBlockTag = material.has("block");
-		if (hasGemTag || hasIngotTag || hasBlockTag) new BlockBlock(material).create();
-
-		// 粒
-		let hasNuggetTag = material.has("nugget");
-		if (hasGemTag || hasIngotTag || hasNuggetTag) new ItemNugget(material).create();
-
-		// 棍
-		let hasStickTag = material.has("stick");
-		if (hasGemTag || hasIngotTag || hasStickTag) new ItemStick(material).create();
+		let hasDensePlateTag = material.has("plateDense");
+		if (hasGemTag || hasIngotTag || hasPlateTag || hasDensePlateTag) {
+			new ItemPlate(material).create();
+			new ItemDensePlate(material).create();
+		}
 	}
 });
 
@@ -135,8 +102,8 @@ Callback.addCallback("PostLoaded", () => {
 		}
 
 		if (hasPlateTag && hasIngotTag) Recipes.addShaped({ id: material.getItem("plate"), count: 2, data: 0 }, ["aaa"], ["a", material.getItem("ingot"), 0]);
-		if (hasStickTag && hasIngotTag) Recipes.addShaped({ id: material.getItem("stick"), count: 4, data: 0 }, ["a", "a"], ["a", material.getItem("ingot"), 0]);
-
+		if (hasStickTag && hasIngotTag)
+			Recipes.addShaped({ id: material.getItem("stick"), count: 4, data: 0 }, ["a", "a"], ["a", material.getItem("ingot"), 0]);
 		if (hasDustTag && hasIngotTag) Recipes.addFurnace(material.getItem("dust"), material.getItem("ingot"), 0);
 		if (hasSmallDustTag && hasNuggetTag) Recipes.addFurnace(material.getItem("dustSmall"), material.getItem("nugget"), 0);
 	}
