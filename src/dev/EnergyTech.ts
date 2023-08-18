@@ -18,3 +18,14 @@ Object.assign ??= function () {
 	}
 	return target;
 };
+
+var __assets__ = `${__dir__}assets/`;
+
+var ToolType: Record<string, BlockMaterial[]> = {
+	axe: ["wood"],
+	pickaxe: ["stone"],
+	shovel: ["dirt"],
+	hoe: ["plant"],
+	shears: ["plant"],
+	sword: ["cobweb"]
+};

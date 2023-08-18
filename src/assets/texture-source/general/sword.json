@@ -1,0 +1,15 @@
+{
+	"size": { "width": 16, "height": 16 },
+	"parts": [
+		{
+			"name": "toolHand"
+		},
+		{
+			"name": "toolSword",
+			"paint": true
+		},
+		{
+			"name": "toolSword_OVERLAY"
+		}
+	]
+}

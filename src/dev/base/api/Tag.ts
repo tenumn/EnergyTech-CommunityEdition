@@ -1,12 +1,12 @@
 class Tag {
 	tags: string[] = [];
 
-	addTag(...tag: string[]) {
+	add(...tag: any[]) {
 		this.tags.push(...tag);
 		return this;
 	}
 
-    hasTag(tag: string): boolean {
+    has(tag: any): boolean {
 		return this.tags.indexOf(tag) != -1;
 	}
 }

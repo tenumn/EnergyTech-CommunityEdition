@@ -1,10 +1,11 @@
 class TextureSource {
-	static getPath(material: string) {
-		let path = `${__dir__}/assets/texture-source/`;
-		return path + (FileTools.isExists(path + material) ? `${material}/` : "general/");
+	static getPath(material: string, name: string, suffix: ".png" | ".json") {
+		let path = `${__assets__}texture-source/[mate]/${name + suffix}`;
+		let mate = path.replace("[mate]", material);
+		return FileTools.isExists(mate) ? mate : path.replace("[mate]", "general");
 	}
 
-	static getConfig(material: string, tag: string, meta?: number) {
+	static getConfig(material: string, tag: string) {
 		let config = {
 			size: { width: 16, height: 16 },
 			parts: [
@@ -17,17 +18,17 @@ class TextureSource {
 				}
 			]
 		};
-		let path = `${this.getPath(material) + tag + (meta ? `_${meta}` : "")}.json`;
+		let path = this.getPath(material, tag, ".json");
 		if (FileTools.isExists(path)) config = FileTools.ReadJSON(path);
 		return config;
 	}
 
 	static getBlockPath() {
-		return `${__dir__}/assets/textures/terrain-atlas/`;
+		return `${__assets__}textures/terrain-atlas/`;
 	}
 
 	static getItemPath() {
-		return `${__dir__}/assets/textures/items-opaque/`;
+		return `${__assets__}textures/items-opaque/`;
 	}
 }
 
@@ -40,9 +41,13 @@ class ItemTexture {
 	bitmap: android.graphics.Bitmap;
 	canvas: android.graphics.Canvas;
 
-	draw(url: string, option?: { offset?: { x: number; y: number }; paint?: android.graphics.Paint }) {
+	drawBitmap(bitmap: android.graphics.Bitmap, option?: { offset?: { x: number; y: number }; paint?: android.graphics.Paint }) {
 		(option ??= {}).offset ??= { x: 0, y: 0 };
-		if (FileTools.isExists(url)) this.canvas.drawBitmap(FileTools.ReadImage(url), option.offset.x, option.offset.y, option.paint);
+		this.canvas.drawBitmap(bitmap, option.offset.x, option.offset.y, option.paint);
+	}
+
+	drawImage(url: string, option?: { offset?: { x: number; y: number }; paint?: android.graphics.Paint }) {
+		if (FileTools.isExists(url)) this.drawBitmap(FileTools.ReadImage(url), option);
 	}
 
 	writeImage(url: string) {

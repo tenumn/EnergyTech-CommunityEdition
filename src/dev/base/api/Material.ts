@@ -46,6 +46,7 @@ class Material extends Tag {
 	key: string;
 	name: string;
 	color: string;
+
 	// parts
 	parts: string[] = [];
 	addPart(parts: string[]) {
@@ -59,7 +60,7 @@ class Material extends Tag {
 	items: Record<string, number> = {};
 	addItem(tag: string, id: number) {
 		this.items[tag] = id;
-		this.addTag(tag);
+		this.add(tag);
 	}
 	getItem(tag: string): number {
 		return this.items[tag];
@@ -69,15 +70,13 @@ class Material extends Tag {
 	genBlockID(tag: string, name: string) {
 		let id = IDRegistry.genBlockID(name);
 		new Group(tag).add([id]);
-		this.items[tag] = id;
-		this.addTag(tag);
+		this.addItem(tag, id);
 		return id;
 	}
 	genItemID(tag: string, name: string) {
 		let id = IDRegistry.genItemID(name);
 		new Group(tag).add([id]);
-		this.items[tag] = id;
-		this.addTag(tag);
+		this.addItem(tag, id);
 		return id;
 	}
 }

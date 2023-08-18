@@ -29,14 +29,14 @@ class BlockOre extends BlockBuilder {
 Callback.addCallback("PreLoaded", () => {
 	for (let key in ETMaterials) {
 		let material = ETMaterials[key];
-		let hasAlloyTag = material.hasTag("alloy");
+		let hasAlloyTag = material.has("alloy");
 		if (!hasAlloyTag) {
 			// 原矿
-			let hasOreTag = material.hasTag("ore");
+			let hasOreTag = material.has("ore");
 			if (hasOreTag) new BlockOre(material).create();
 
 			// 粗矿
-			let hasRawOreTag = material.hasTag("rawOre");
+			let hasRawOreTag = material.has("rawOre");
 			if (hasOreTag || hasRawOreTag) new ItemRawOre(material).create();
 		}
 	}
@@ -46,10 +46,10 @@ Callback.addCallback("PostLoaded", () => {
 	for (let key in ETMaterials) {
 		let material = ETMaterials[key];
 
-		let hasGemTag = material.hasTag("gem");
-		let hasOreTag = material.hasTag("ore");
-		let hasIngotTag = material.hasTag("ingot");
-		let hasRawOreTag = material.hasTag("rawOre");
+		let hasGemTag = material.has("gem");
+		let hasOreTag = material.has("ore");
+		let hasIngotTag = material.has("ingot");
+		let hasRawOreTag = material.has("rawOre");
 
 		if (hasOreTag && hasGemTag) Recipes.addFurnace(material.getItem("ore"), material.getItem("gem"), 0);
 		if (hasOreTag && hasIngotTag) Recipes.addFurnace(material.getItem("ore"), material.getItem("ingot"), 0);

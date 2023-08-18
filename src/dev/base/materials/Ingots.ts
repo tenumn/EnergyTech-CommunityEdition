@@ -70,39 +70,39 @@ Callback.addCallback("PreLoaded", () => {
 	for (let key in ETMaterials) {
 		let material = ETMaterials[key];
 		// 宝石
-		let hasGemTag = material.hasTag("gem");
+		let hasGemTag = material.has("gem");
 		if (hasGemTag) new ItemGem(material).create();
 
 		// 锭
-		let hasIngotTag = material.hasTag("ingot");
+		let hasIngotTag = material.has("ingot");
 		if (hasIngotTag) new ItemIngot(material).create();
 
 		// 齿轮
-		let hasGearTag = material.hasTag("gear");
+		let hasGearTag = material.has("gear");
 		if (hasIngotTag || hasGearTag) new ItemGear(material).create();
 
 		// 粉
-		let hasDustTag = material.hasTag("dust");
+		let hasDustTag = material.has("dust");
 		if (hasGemTag || hasIngotTag || hasDustTag) new ItemDust(material).create();
 
 		// 小堆粉
-		let hasSmallDustTag = material.hasTag("dustSmall");
+		let hasSmallDustTag = material.has("dustSmall");
 		if (hasDustTag || hasSmallDustTag) new ItemSmallDust(material).create();
 
 		// 板
-		let hasPlateTag = material.hasTag("plate");
+		let hasPlateTag = material.has("plate");
 		if (hasGemTag || hasIngotTag || hasPlateTag) new ItemPlate(material).create();
 
 		// 块
-		let hasBlockTag = material.hasTag("block");
+		let hasBlockTag = material.has("block");
 		if (hasGemTag || hasIngotTag || hasBlockTag) new BlockBlock(material).create();
 
 		// 粒
-		let hasNuggetTag = material.hasTag("nugget");
+		let hasNuggetTag = material.has("nugget");
 		if (hasGemTag || hasIngotTag || hasNuggetTag) new ItemNugget(material).create();
 
 		// 棍
-		let hasStickTag = material.hasTag("stick");
+		let hasStickTag = material.has("stick");
 		if (hasGemTag || hasIngotTag || hasStickTag) new ItemStick(material).create();
 	}
 });
@@ -111,13 +111,13 @@ Callback.addCallback("PostLoaded", () => {
 	for (let key in ETMaterials) {
 		let material = ETMaterials[key];
 
-		let hasDustTag = material.hasTag("dust");
-		let hasPlateTag = material.hasTag("plate");
-		let hasStickTag = material.hasTag("stick");
-		let hasIngotTag = material.hasTag("ingot");
-		let hasBlockTag = material.hasTag("block");
-		let hasNuggetTag = material.hasTag("nugget");
-		let hasSmallDustTag = material.hasTag("dustSmall");
+		let hasDustTag = material.has("dust");
+		let hasPlateTag = material.has("plate");
+		let hasStickTag = material.has("stick");
+		let hasIngotTag = material.has("ingot");
+		let hasBlockTag = material.has("block");
+		let hasNuggetTag = material.has("nugget");
+		let hasSmallDustTag = material.has("dustSmall");
 
 		if (hasDustTag && hasSmallDustTag) {
 			Recipes.addShaped({ id: material.getItem("dust"), count: 1, data: 0 }, ["aaa", "aaa", "aaa"], ["a", material.getItem("dustSmall"), 0]);

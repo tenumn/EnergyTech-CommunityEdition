@@ -6,5 +6,3 @@
 ./EnergyTech.ts
 
 ./base/**/*.ts
-
-./tech/**/*.ts

@@ -24,6 +24,7 @@
 		"base/api/Texture.ts",
 		"base/materials/Ingots.ts",
 		"base/materials/Ores.ts",
+		"base/materials/Tools.ts",
 		"base/materials/_Materials.ts"
 	],
 	"files": [
