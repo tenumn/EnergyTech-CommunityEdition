@@ -1,6 +1,9 @@
+.idea/
 output/
 
-**/build/
-
 !src/*
+
+**/build/
 !toolchain/declarations/*
+
+*.zip
