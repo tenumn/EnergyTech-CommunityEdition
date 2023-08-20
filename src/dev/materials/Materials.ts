@@ -64,16 +64,12 @@ var ETMaterials: Record<string, Material> = {
 	}).add("ore", "ingot", "tool"),
 	// 铅
 	lead: new Material("lead", "Lead", {}).add("ore", "ingot", "tool"),
-	// 方铅矿
-	galena: new Material("galena", "Galena", {}).add("ore", "ingot"),
 	// 银
 	silver: new Material("silver", "Silver", {}).add("ore", "ingot", "tool"),
 	// 铝
 	bauxite: new Material("bauxite", "Bauxite", {}).add("ore", "ingot", "tool"),
 	// 铜
 	copper: new Material("copper", "Copper", {}).add("ore", "ingot", "tool"),
-	// 黝铜
-	tetrahedrite: new Material("tetrahedrite", "Tetrahedrite", {}).add("ore", "ingot"),
 	// 锡
 	tin: new Material("tin", "Tin", {}).add("ore", "ingot", "tool"),
 	// 锡石
@@ -84,6 +80,8 @@ var ETMaterials: Record<string, Material> = {
 	tungsten: new Material("tungsten", "Tungsten", {}).add("ore", "ingot"),
 	// 铀
 	uranium: new Material("uranium", "Uranium", {}).add("ore", "ingot"),
+	// 钢
+	steel: new Material("steel", "Steel", {}).add("ingot", "tool"),
 
 	/* ========================= 宝石 ========================= */
 	// 红宝石
@@ -102,6 +100,24 @@ var ETMaterials: Record<string, Material> = {
 			sword: VanillaItemID.diamond_sword
 		}
 	}).add("ore", "gem", "tool"),
+
+	/* ========================= 矿石 ========================= */
+
+	// 黝铜
+	tetrahedrite: new Material("tetrahedrite", "Tetrahedrite", {}).add("ore", "ingot"),
+	// 方铅矿
+	galena: new Material("galena", "Galena", {}).add("ore", "ingot"),
+
+	/* ========================= 联动 ========================= */
+
+	// 暗物质
+	dark_matter: new Material("dark_matter", "Dark Matter", {}).add("gem", "tool"),
+	// 红物质
+	red_matter: new Material("red_matter", "Red Matter", {}).add("gem", "tool"),
+
+	// UU物质
+	uu_matter: new Material("uu_matter", "UU Matter", {}).add("gem"),
+
 	// 中子素
-	neutronium: new Material("neutronium", "Neutronium", {}).add("gem")
+	neutronium: new Material("neutronium", "Neutronium", {}).add("gem"),
 };

@@ -3,6 +3,4 @@
 
 # nocheck
 
-./EnergyTech.ts
-
-./base/**/*.ts
+./**/*.ts

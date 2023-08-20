@@ -45,7 +45,7 @@ class BlockBuilder extends Builder {
 			let icon = this.getTexture();
 			let config = TextureSource.getConfig(this.material.key, this.tag);
 			for (let i = 0; i < Math.min(icon.length, 6); i++) {
-				let texture = new ItemTexture(config.size);
+				let texture = new ItemTexture({ width: config.size.width, height: config.size.height * (config.animation || 1) });
 				for (let part of config.parts) {
 					let paint = new Paint();
 					if (part.paint) {
@@ -80,7 +80,7 @@ class ItemBuilder extends Builder {
 	create() {
 		if (!this.material.getItem(this.tag)) {
 			let config = TextureSource.getConfig(this.material.key, this.tag);
-			let texture = new ItemTexture(config.size);
+			let texture = new ItemTexture({ width: config.size.width, height: config.size.height * (config.animation || 1) });
 			for (let part of config.parts) {
 				let paint = new Paint();
 				if (part.paint) {
@@ -96,8 +96,7 @@ class ItemBuilder extends Builder {
 			let id = this.material.genItemID(this.tag, this.getStringId());
 			Item.createItem(this.getStringId(), this.getDisplayedName(), this.getIcon(), { stack: this.getMaxStack() });
 			this.onCreate(id);
-
-			Logger.Log(`创建物品 ID: ${this.getStringId()}(${id})`, `能源科技/材料`);
+			Logger.Log(`创建物品 ID: ${this.getStringId()} (${id})`, `能源科技/材料`);
 		}
 	}
 

@@ -4,7 +4,8 @@ class BlockEntity implements TileEntity {
 	readonly z: number;
 	readonly dimension: number;
 	readonly blockID: number;
-	data: Record<string, any>;
+	defaultValues = {};
+	data: this["defaultValues"];
 	container: ItemContainer;
 	liquidStorage: LiquidRegistry.Storage;
 	isLoaded: boolean;
